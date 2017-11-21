@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Method, Prop } from '@stencil/core';
 
 
 @Component({
@@ -11,6 +11,11 @@ export class MyName {
 
   @Prop() last: string;
 
+  @Method()
+  test() {
+      console.log('test!');
+  }
+
   render() {
     return (
       <div>
@@ -19,3 +24,10 @@ export class MyName {
     );
   }
 }
+
+window.addEventListener('load', function() {
+    console.log('in onload');
+    const component = document.querySelector('my-name');
+    component['test']();
+})
+
